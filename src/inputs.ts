@@ -17,3 +17,4 @@ export const updateComment: boolean = core.getBooleanInput("updateComment");
 export const customNpxArgs: string = core.getInput("customNpxArgs");
 export const cdktfArgs: string = core.getInput("cdktfArgs");
 export const suppressOutput: boolean = core.getBooleanInput("suppressOutput");
+export const useLocalCdktf: boolean = core.getBooleanInput("useLocalCdktf");

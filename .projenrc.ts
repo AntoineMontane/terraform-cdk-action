@@ -95,6 +95,13 @@ const inputs = {
     required: false,
     type: "boolean",
   },
+  useLocalCdktf: {
+    description:
+      "Use locally installed cdktf-cli from node_modules instead of downloading via npx",
+    default: "false",
+    required: false,
+    type: "boolean",
+  },
 };
 
 const outputs = {

@@ -43,6 +43,7 @@ describe("comment", () => {
     customNpxArgs: "",
     cdktfArgs: "",
     suppressOutput: false,
+    useLocalCdktf: false,
   };
 
   const pullRequestData = {

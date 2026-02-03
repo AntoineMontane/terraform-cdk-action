@@ -19,6 +19,7 @@ The Terraform CDK GitHub Action allows you to run CDKTF as part of your CI/CD wo
 | `customNpxArgs` | <p>The additional CLI arguments to pass to npx as part of the cdktf-cli execution.</p> | `false` | `""` |
 | `cdktfArgs` | <p>The additional CLI arguments to pass to cdktf as part of the cdktf-cli execution.</p> | `false` | `""` |
 | `suppressOutput` | <p>Whether to suppress the output of the action in PR comments</p> | `false` | `false` |
+| `useLocalCdktf` | <p>Use locally installed cdktf-cli from node_modules instead of downloading via npx</p> | `false` | `false` |
 <!-- action-docs-inputs action="action.yml" -->
 
 <!-- action-docs-outputs action="action.yml" -->

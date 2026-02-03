@@ -17,4 +17,5 @@ export interface Inputs {
   customNpxArgs: string;
   cdktfArgs: string;
   suppressOutput: boolean;
+  useLocalCdktf: boolean;
 }

@@ -81,9 +81,15 @@ async function execute(
   await ensureTerraform(inputs.terraformVersion);
 
   const mainCommand = `${cdktfCommand} ${inputs.cdktfArgs}`;
-  const fullCdktfCommand = inputs.customNpxArgs
-    ? `npx --yes ${inputs.customNpxArgs} cdktf-cli@${inputs.cdktfVersion} ${mainCommand}`
-    : `npx --yes cdktf-cli@${inputs.cdktfVersion} ${mainCommand}`;
+  let fullCdktfCommand: string;
+  if (inputs.useLocalCdktf) {
+    // Use locally installed cdktf-cli (must be in node_modules)
+    fullCdktfCommand = `npx cdktf ${mainCommand}`;
+  } else if (inputs.customNpxArgs) {
+    fullCdktfCommand = `npx --yes ${inputs.customNpxArgs} cdktf-cli@${inputs.cdktfVersion} ${mainCommand}`;
+  } else {
+    fullCdktfCommand = `npx --yes cdktf-cli@${inputs.cdktfVersion} ${mainCommand}`;
+  }
 
   core.debug(`Executing: ${fullCdktfCommand}`);
   let output = "";
@@ -132,6 +138,7 @@ export async function run(): Promise<void> {
     customNpxArgs: input.customNpxArgs,
     cdktfArgs: input.cdktfArgs,
     suppressOutput: input.suppressOutput,
+    useLocalCdktf: input.useLocalCdktf,
   };
   const octokit = github.getOctokit(inputs.githubToken);
   const commentController = new CommentController({
